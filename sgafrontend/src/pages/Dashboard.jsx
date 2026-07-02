@@ -32,6 +32,12 @@ function Dashboard() {
         if (!file) { setError('Please select a PDF resume'); return; }
         if (!jobDescription.trim()) { setError('Please provide a Job Description'); return; }
 
+        const wordCount = jobDescription.trim().split(/\s+/).length;
+        if (wordCount < 20) {
+            setError('Please enter a valid Job Description. The provided description is too short.'');
+            return;
+        }
+        
         setLoading(true);
         setError('');
 
